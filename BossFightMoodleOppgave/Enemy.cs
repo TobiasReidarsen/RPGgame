@@ -13,4 +13,21 @@ public class Enemy : FighterCharacters
         CharacterType = "Enemy";
         base.CharacterCreated();
     }
+    
+    public Enemy(bool std)
+    {
+        Name = "Little Man";
+        Description = "Fodder enemy. Nothing more to it";
+        Age = 45;
+        Health = 30;
+        Str = 7;
+        Stamina = 15;
+        CharacterType = "Enemy";
+        base.CharacterCreated();
+    }
+
+    public Enemy()
+    {
+        
+    }
 }

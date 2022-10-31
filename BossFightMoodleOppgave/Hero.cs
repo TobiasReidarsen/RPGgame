@@ -13,4 +13,16 @@ public class Hero : FighterCharacters
         CharacterType = "Hero";
         base.CharacterCreated();
     }
+
+    public Hero()
+    {
+        Name = "Giga Hero Schmo";
+        Description = "Very smart";
+        Age = 19;
+        Health = 100;
+        Str = 20;
+        Stamina = 40;
+        CharacterType = "Hero";
+        base.CharacterCreated();
+    }
 }

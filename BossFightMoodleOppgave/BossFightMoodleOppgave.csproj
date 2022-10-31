@@ -7,4 +7,10 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Compile Remove="SecondChildOfTestClass.cs" />
+      <Compile Remove="TestClass.cs" />
+      <Compile Remove="ChildOfTestClass.cs" />
+    </ItemGroup>
+
 </Project>

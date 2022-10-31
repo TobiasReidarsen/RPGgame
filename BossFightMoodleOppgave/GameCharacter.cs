@@ -16,6 +16,7 @@ public abstract class GameCharacter
 
     protected virtual void CharacterCreated()
     {
+        Console.SetCursorPosition(0, 0);
         Console.WriteLine("Created character.\n" +
                           "Type: {0}\n" +
                           "Name: {1}\n" +
@@ -24,6 +25,7 @@ public abstract class GameCharacter
                           "Description: {4}",
             CharacterType, Name, Health, Stamina, Description);
         Console.ReadKey(true);
+        Console.SetCursorPosition(0, 0);
         Console.Clear();
     }
 }
