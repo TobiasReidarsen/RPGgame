@@ -2,12 +2,19 @@ namespace BossFightMoodleOppgave;
 
 public abstract class GameCharacter
 {
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public int Age { get; set; }
-    public float Health { get; set; }
-    public float Stamina { get; set; }
-    public string CharacterType { get; set; }
+    // #TODO should I use protected here or public?
+    protected string Name { get; set; }
+    protected string Description { get; set; }
+    protected int Age { get; set; }
+    protected float Health { get; set; }
+    protected float Stamina { get; set; }
+    protected string CharacterType { get; set; }
+    protected int Str { get; set; }
+
+    public int GetStr()
+    {
+        return Str;
+    }
 
     public virtual void SayName()
     {

@@ -2,7 +2,7 @@ namespace BossFightMoodleOppgave;
 
 public abstract class FighterCharacters : GameCharacter
 {
-    protected int Str { get; set; }
+    
 
     protected override void CharacterCreated()
     {
@@ -20,10 +20,12 @@ public abstract class FighterCharacters : GameCharacter
         Console.Clear();
     }
 
-    public virtual void Fight(GameCharacter hero, GameCharacter opponent)
+    public virtual void Fight(GameCharacter hero, GameCharacter opponent, string oponentType)
     {
-        Console.WriteLine(Str);
-        opponent.Health -= Str;
+        int heroStr = hero.GetStr();
+        int enemyStr = opponent.GetStr();
+        Console.WriteLine(heroStr);
+        Console.WriteLine(enemyStr);
     }
 
     public virtual void Restore()

@@ -3,7 +3,7 @@
 Hero hero = new Hero();
 Enemy basicEnemy = new Enemy(true);
 Boss boss = new Boss();
-hero.Fight(hero, boss);
+hero.Fight(hero, boss, "boss");
 
 
 /*
