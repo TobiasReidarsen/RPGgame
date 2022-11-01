@@ -24,5 +24,6 @@ public class Boss : Enemy
         Stamina = 10;
         CharacterType = "Boss";
         base.CharacterCreated();
+        //CharacterCreated(true); // kan da bruke den virtuelle istedenfor den som er overrida
     }
 }
