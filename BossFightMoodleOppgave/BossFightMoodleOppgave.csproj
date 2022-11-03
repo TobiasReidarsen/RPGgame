@@ -11,6 +11,7 @@
       <Compile Remove="SecondChildOfTestClass.cs" />
       <Compile Remove="TestClass.cs" />
       <Compile Remove="ChildOfTestClass.cs" />
+      <Compile Remove="FighterCharacters.cs" />
     </ItemGroup>
 
 </Project>

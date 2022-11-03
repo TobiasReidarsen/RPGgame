@@ -1,30 +1,19 @@
 namespace BossFightMoodleOppgave;
 
-public class Hero : FighterCharacters
+public class Hero : GameCharacter
 {
-    public Hero(string name, string description, int age, float health, float stamina, int str, int characterLvl)
-    {
-        Name = name;
-        Description = description;
-        Age = age;
-        Health = health;
-        Stamina = stamina;
-        //Str = str;
-        CharacterType = "Hero";
-        CharacterLvl = characterLvl;
-        base.CharacterCreated();
-    }
+   public Hero()
+   {
+      Name = "Tobias";
+      CharacterType = "Hero";
+      CharacterLvl = 10;
+      Vig = 20;
+      End = 4;
+      Str = 10;
+      CalcTotalLvl();
+      Health = CalcHealthWithLvls(Vig, End, CharacterLvl, TotalLvl);
+      Stamina = CalcStamina(End, TotalLvl); 
+      Strenght = CalcStrenght(Str, CharacterType);
 
-    public Hero()
-    {
-        Name = "Giga Hero Schmo";
-        Description = "Very smart";
-        Age = 19;
-        Health = 100;
-        //Str = 20;
-        Stamina = 40;
-        CharacterType = "Hero";
-        CharacterLvl = 1;
-        base.CharacterCreated();
-    }
+   }
 }
