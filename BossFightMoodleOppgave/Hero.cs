@@ -2,7 +2,7 @@ namespace BossFightMoodleOppgave;
 
 public class Hero : FighterCharacters
 {
-    public Hero(string name, string description, int age, float health, float stamina, int str)
+    public Hero(string name, string description, int age, float health, float stamina, int str, int characterLvl)
     {
         Name = name;
         Description = description;
@@ -11,6 +11,7 @@ public class Hero : FighterCharacters
         Stamina = stamina;
         Str = str;
         CharacterType = "Hero";
+        CharacterLvl = characterLvl;
         base.CharacterCreated();
     }
 
@@ -23,6 +24,7 @@ public class Hero : FighterCharacters
         Str = 20;
         Stamina = 40;
         CharacterType = "Hero";
+        CharacterLvl = 1;
         base.CharacterCreated();
     }
 }

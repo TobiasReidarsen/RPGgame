@@ -8,24 +8,19 @@ public abstract class GameCharacter
     protected string Name { get; set; } // should these be abstract?
     protected string Description { get; set; }
     protected int Age { get; set; }
-    protected float Health { get; set; }
-    protected float Stamina { get; set; }
     protected string CharacterType { get; set; }
-    protected int Str { get; set; }
+    protected int CharacterLvl { get; set; }
+    protected float Health { get; set; }
+    protected float Vitality { get; set; }
+    protected float Stamina { get; set; }
+    protected float Endurace { get; set; }
+    
 
-    public int GetStr(bool random)
-    {
-        if (CharacterType == "Boss")
-        {
-            int _str = new Random().Next(0, Str + 1 );
-            return _str;
-        }
-
-        return Str;
-    }
+    
     public float GetHealth() => Health;
     public float GetStamina() => Stamina;
     public string GetName() => Name;
+    public int GetCharLvl() => CharacterLvl;
 
     public virtual void SayName()
     {

@@ -14,7 +14,7 @@ public class Enemy : FighterCharacters
         base.CharacterCreated();
     }
     
-    public Enemy(bool std)
+    public Enemy()
     {
         Name = "Little Man";
         Description = "Fodder enemy. Nothing more to it";
@@ -26,8 +26,4 @@ public class Enemy : FighterCharacters
         base.CharacterCreated();
     }
 
-    public Enemy()
-    {
-        
-    }
 }

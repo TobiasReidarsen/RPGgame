@@ -23,7 +23,10 @@ public class Boss : Enemy
         Str = 30;
         Stamina = 10;
         CharacterType = "Boss";
+        BaseDamagePhys = base.BasePhysDamageCalc(Str, CharacterLvl);
         base.CharacterCreated();
+
+        Console.WriteLine(base.BaseDamagePhys); // 33
         //CharacterCreated(true); // kan da bruke den virtuelle istedenfor den som er overrida
     }
 }
