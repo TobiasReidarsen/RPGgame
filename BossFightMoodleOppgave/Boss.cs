@@ -9,7 +9,7 @@ public class Boss : Enemy
         Age = age;
         Health = health;
         Stamina = stamina;
-        Str = str;
+        //Str = str;
         CharacterType = "Boss";
         base.CharacterCreated();
     }
@@ -20,7 +20,7 @@ public class Boss : Enemy
         Description = "Very strong, but slow and stupid (and boring at parties)";
         Age = 600;
         Health = 400;
-        Str = 30;
+        //Str = 30;
         Stamina = 10;
         CharacterType = "Boss";
         BaseDamagePhys = base.BasePhysDamageCalc(Str, CharacterLvl);

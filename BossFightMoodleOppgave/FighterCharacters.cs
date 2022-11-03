@@ -3,16 +3,25 @@ namespace BossFightMoodleOppgave;
 public abstract class FighterCharacters : GameCharacter
 {
     // #TODO make a level system.
-    protected private double _BaseDamagePhys;
 
-    protected double BaseDamagePhys
-    {
-        get => _BaseDamagePhys; 
-        set => _BaseDamagePhys = value;
-    }
-    
+    protected double BaseDamagePhys { get; set; }
+
     protected int Str { get; set; }
     protected int StrLvl { get; set; }
+
+    public virtual int SetStrenght()
+    {
+        // Str is StrLvl times any modifiers such as weapons or passive or active skills or anything else.
+        Str = StrLvl * 3;
+        return Str;
+    }
+    
+    public virtual double BasePhysDamageCalc(int protagStr, int protagLvl)
+    {
+        double protagDmgMltplr = Math.Pow(1.1, protagLvl);
+        double baseDamage = protagStr * protagDmgMltplr;
+        return baseDamage;
+    }
 
     public int GetStr(bool random)
     {
@@ -55,12 +64,6 @@ public abstract class FighterCharacters : GameCharacter
         CharacterCreated();
     }
 
-    public virtual double BasePhysDamageCalc(int protagStr, int protagLvl)
-    {
-        double protagDmgMltplr = Math.Pow(1.1, protagLvl);
-        double baseDamage = protagStr * protagDmgMltplr;
-        return baseDamage;
-    }
 
     public virtual float SubtractDefenceFromDamage(float baseDamage, float flatDefense, float percentageDefense)
     {
@@ -135,13 +138,9 @@ public abstract class FighterCharacters : GameCharacter
     //   
     // }
 
-    public virtual int RollForStrenght()
-    {
-        return 0;
-    }
-
     public virtual void Restore()
     {
         // restores stamina
     }
+    
 }

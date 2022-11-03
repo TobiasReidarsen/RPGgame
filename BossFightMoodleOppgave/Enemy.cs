@@ -9,7 +9,7 @@ public class Enemy : FighterCharacters
         Age = age;
         Health = health;
         Stamina = stamina;
-        Str = str;
+        //Str = str;
         CharacterType = "Enemy";
         base.CharacterCreated();
     }
@@ -20,7 +20,7 @@ public class Enemy : FighterCharacters
         Description = "Fodder enemy. Nothing more to it";
         Age = 45;
         Health = 30;
-        Str = 7;
+        //Str = 7;
         Stamina = 15;
         CharacterType = "Enemy";
         base.CharacterCreated();

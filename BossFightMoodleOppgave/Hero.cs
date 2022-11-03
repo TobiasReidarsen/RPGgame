@@ -9,7 +9,7 @@ public class Hero : FighterCharacters
         Age = age;
         Health = health;
         Stamina = stamina;
-        Str = str;
+        //Str = str;
         CharacterType = "Hero";
         CharacterLvl = characterLvl;
         base.CharacterCreated();
@@ -21,7 +21,7 @@ public class Hero : FighterCharacters
         Description = "Very smart";
         Age = 19;
         Health = 100;
-        Str = 20;
+        //Str = 20;
         Stamina = 40;
         CharacterType = "Hero";
         CharacterLvl = 1;
