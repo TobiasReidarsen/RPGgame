@@ -1,10 +1,18 @@
 ﻿using System.Runtime.CompilerServices;
 using BossFightMoodleOppgave;
 
+Enemy enemy = new Enemy();
+Boss boss = new Boss();
+
+
+
+
+//GameCharacter fef = new Boss(); // WOW! #TODO Investigate this
+
 
 //Hero hero = new Hero();
 //Enemy basicEnemy = new Enemy();
-Boss boss = new Boss();
+//Boss boss = new Boss();
 //hero.BasePhysDamageCalc(hero.GetStr(false), hero.GetCharLvl());
 //hero.Fight(hero, boss, "boss"); // maybe put every fighter character or game character in a list?
 //boss.Fight(boss, hero, "Hero");
