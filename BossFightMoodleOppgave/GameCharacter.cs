@@ -4,42 +4,45 @@ namespace BossFightMoodleOppgave;
 
 public abstract class GameCharacter
 {
+    // #TODO Implement a hit chance.
     protected string CharacterType { get; set; }
+
     // Default is "Empty_Came_Character"
-    protected string Name { get; set; } 
-    
-    
+    protected string Name { get; set; }
+
+
     // Increases Health by 10 every characterLvl
     // Can be increased by gaining xp or finding a lvl book.
-    protected int CharacterLvl { get; set; } 
-    
+    protected int CharacterLvl { get; set; }
+
     // the sum of vig, CharacterLvl, End, Str, Bra etc.
     // The sum of all stat lvls. Used in calculation of health.
-    protected int TotalLvl { get; set; } 
-    
+    protected int TotalLvl { get; set; }
+
     // Vigor. The more vigor, the more health and stamina and damage resistance // Default is 10
     // Increases by health by 10 per character lcl, and by 2 per stat lvl increase.
     // Vig increases health by 15 per lvl.
-    protected int Vig { get; set; } 
+    protected int Vig { get; set; }
     protected double Health { get; set; }
-    
+
     // Endurance
     // Determines Stamina
-    protected int End { get; set; } 
+    protected int End { get; set; }
     protected double Stamina { get; set; } // is calculated by End
-    
+
     // Calculates Strenght
     protected int Str { get; set; } // Strength
     protected int Strenght { get; set; } // Is determined by the Str stat plus any passive or active skills
-    
+
     // The maximum possible Physical damage.
     // Calculated by strenght and charcter lvl and totalLvl
     protected double MaxPhysDamage { get; set; }
-    
+
     // The flat damage reducitons. Based on End, Str, Equipment and skills #TODO: implement this and reduction by percentage
     protected double FlatReduc { get; set; }
 
-    protected double CalcHealthWithLvls(int vig, int end, int characterLvl, int totalLvl) //#TODO Probably do not need params.
+    protected double
+        CalcHealthWithLvls(int vig, int end, int characterLvl, int totalLvl) //#TODO Probably do not need params.
     {
         double health = vig * 15;
         health += characterLvl * 10;
@@ -72,6 +75,7 @@ public abstract class GameCharacter
                 int strenght = rnd.Next(0, str + 1); // and any equipment or skills;
                 return strenght;
             }
+
             return str;
         }
 
@@ -88,8 +92,71 @@ public abstract class GameCharacter
         TotalLvl = CharacterLvl + Vig + End;
     }
 
+    protected double RestoreStamina(double currentStamina)
+    {
+        double originalStamina = CalcStamina(End, TotalLvl);
+        if (currentStamina < originalStamina)
+        {
+            currentStamina += 10;
+            if (currentStamina >= originalStamina)
+            {
+                return originalStamina;
+            }
+
+            return currentStamina;
+        }
+
+        return currentStamina;
+    }
+
+    public void Fight(GameCharacter opponent)
+    {
+        if (Health > 0 && opponent.Health > 0 && Stamina > 0)
+        {
+            double opponentHealth =
+                opponent.CalcHealthWithLvls(opponent.Vig, opponent.End, opponent.CharacterLvl, opponent.TotalLvl);
+            double damage = CalcDamageDealt();
+            Console.WriteLine(damage);
+            opponentHealth -= damage;
+            Stamina -= 10;
+            if (opponentHealth <= 0 || Health <= 0)
+            {
+                string name = opponentHealth <= 0 || Health <= 0 ? opponent.Name : Name;
+                Console.WriteLine($"{name} has been defeated!", name);
+                Console.ReadKey(true);
+            }
+
+            if (CharacterType == "Hero")
+            {
+                Console.WriteLine($"{opponent.Name} took {damage} damage, and now has {opponentHealth} health left");
+            }
+            else
+            {
+                Console.WriteLine($"{Name} took {damage} damage, and has now {opponentHealth} health left");
+            }
+        }
+
+        if (Stamina == 0)
+        {
+            Stamina = RestoreStamina(Stamina);
+            Console.WriteLine($"Stamina is now: {Stamina}");
+        }
+    }
+
+    protected double CalcDamageDealt()
+    {
+        if (CharacterType != "Hero")
+        {
+            int strenght = CalcStrenght(Str, CharacterType);
+            return CalcMaxPhysDamage(strenght, CharacterLvl, TotalLvl);
+        }
+
+        return MaxPhysDamage;
+    }
+
     protected GameCharacter()
-    { // #TODO Make them into pure functions.
+    {
+        // #TODO Make them into pure functions.
         // StandardValues
         Name = "Empty_Came_Character";
         CharacterType = "Empty";
@@ -98,10 +165,9 @@ public abstract class GameCharacter
         End = 5;
         Str = 5;
         CalcTotalLvl();
-        Health = CalcHealthWithLvls(Vig, End,CharacterLvl, TotalLvl);
-        CalcStamina(End, TotalLvl);
-        CalcHealthWithLvls(Vig, End, CharacterLvl, TotalLvl);
-        CalcStrenght(Str, CharacterType);
+        Health = CalcHealthWithLvls(Vig, End, CharacterLvl, TotalLvl);
+        Stamina = CalcStamina(End, TotalLvl);
+        Strenght = CalcStrenght(Str, CharacterType);
+        MaxPhysDamage = CalcMaxPhysDamage(Str,CharacterLvl, TotalLvl);
     }
-    
 }

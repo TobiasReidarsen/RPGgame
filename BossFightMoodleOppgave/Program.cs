@@ -3,6 +3,9 @@ using BossFightMoodleOppgave;
 
 Enemy enemy = new Enemy();
 Boss boss = new Boss();
+Hero tobias = new Hero();
+
+tobias.Fight(boss);
 
 
 
